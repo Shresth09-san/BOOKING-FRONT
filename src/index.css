@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -30,20 +31,19 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
+    --border: 38 20% 90%;
     --input: 38 20% 90%;
     --ring: 35 91% 65%;
 
     --radius: 0.75rem;
   }
 
+  * {
+    @apply border-border;
+  }
 
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply bg-background text-foreground font-inter antialiased;
   }
 
   html {
@@ -53,34 +53,19 @@
 
 @layer components {
   .glass-card {
-    @apply bg-white bg-opacity-80 backdrop-blur-sm border border-white/20 shadow-glass;
+    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-glass;
   }
   
   .btn-primary {
-    @apply text-white transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-full font-medium;
-    background-color: hsl(var(--primary));
-  }
-  
-  .btn-primary:hover {
-    background-color: hsl(var(--accent));
+    @apply bg-doit-400 text-white hover:bg-doit-500 transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-full font-medium;
   }
   
   .btn-secondary {
-    @apply text-white transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-full font-medium;
-    background-color: hsl(var(--secondary));
-  }
-  
-  .btn-secondary:hover {
-    background-color: hsl(var(--accent));
+    @apply bg-orange-500 text-white hover:bg-orange-600 transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-full font-medium;
   }
   
   .btn-outline {
-    @apply border-2 transition-all duration-300 px-6 py-2.5 rounded-full font-medium;
-    border-color: hsl(var(--primary));
-    color: hsl(var(--primary));
-  }
-  .btn-outline:hover {
-    background-color: hsl(var(--primary) / 0.1);
+    @apply border-2 border-doit-400 text-doit-400 hover:bg-doit-400/10 transition-all duration-300 px-6 py-2.5 rounded-full font-medium;
   }
 
   .card-hover {
@@ -88,14 +73,7 @@
   }
   
   .nav-link {
-    @apply transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-300 hover:after:w-full;
-    color: hsl(var(--foreground) / 0.8);
-  }
-  .nav-link:hover {
-    color: hsl(var(--foreground));
-  }
-  .nav-link::after {
-    background: hsl(var(--primary));
+    @apply text-foreground/80 hover:text-foreground transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-doit-400 after:transition-all after:duration-300 hover:after:w-full;
   }
   
   .h1 {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { toast } from "../../components/ui/use-toast";
+import { toast } from "@/components/ui/use-toast";
 import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 import { format } from "date-fns";

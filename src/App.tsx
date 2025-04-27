@@ -1,22 +1,25 @@
-import { Toaster } from "./components/ui/toaster";
-import { Toaster as Sonner } from "./components/ui/sonner";
-import { TooltipProvider } from "./components/ui/tooltip";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate
+  Navigate,
+  useLocation,
 } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "@/context/AuthContext";
 import { useEffect, useState } from "react";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
-import { useAuth } from "./context/AuthContext";
+import Services from "./pages/Services";
+import { useAuth } from "@/context/AuthContext";
 import AdminLogin from "./pages/AdminLogin";
-import Loader from "./components/ui/loader";
+import EmailLogin from "./components/SupaBase/EmailLogin";
+import Loader from "@/components/ui/loader";
 import Payment from "./components/Payment/Payment";
 import StripePaymentStatus from "./components/Payment/StripePaymentStatus";
 
@@ -44,6 +47,7 @@ const ProtectedAdminRoute = ({ children }: { children: React.ReactNode }) => {
 const AppContent = () => {
   const [loading, setLoading] = useState(true);
   const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     // Only show loading on initial app load, not on route changes
@@ -74,8 +78,9 @@ const AppContent = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/EmailLogin" element={<EmailLogin />} />
           <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route path="/Payment" element={<Payment />} />
           <Route path="/payment-status" element={<StripePaymentStatus />} />
           <Route
             path="/admin"

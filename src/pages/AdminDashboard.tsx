@@ -1,8 +1,9 @@
+
 import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import UserManagement from '../components/admin/UserManagement';
-import BookingManagement from '../components/admin/BookingManagement';
-import Analytics from '../components/admin/Analytics';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import UserManagement from '@/components/admin/UserManagement';
+import BookingManagement from '@/components/admin/BookingManagement';
+import Analytics from '@/components/admin/Analytics';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState<string>('analytics');

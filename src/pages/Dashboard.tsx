@@ -1,9 +1,11 @@
+
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 import UserDashboard from './UserDashboard';
 import ProviderDashboard from './ProviderDashboard';
 import { Loader2 } from 'lucide-react';
+
 
 const Dashboard = () => {
   const { isAuthenticated, user, loading, isAdmin } = useAuth();

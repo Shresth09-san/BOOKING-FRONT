@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { adminApi } from "../../lib/admin-api";
-import { AnalyticsData } from "../../lib/models";
-import { useAuth } from "../../context/AuthContext";
+import { adminApi } from "@/lib/admin-api";
+import { AnalyticsData } from "@/lib/models";
+import { useAuth } from "@/context/AuthContext";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../components/ui/card";
+} from "@/components/ui/card";
 import {
   BarChart,
   Bar,
@@ -21,7 +21,7 @@ import {
   Cell,
   Legend,
 } from "recharts";
-import { toast } from "../../components/ui/use-toast";
+import { toast } from "@/components/ui/use-toast";
 import {
   Users,
   UserCheck,
@@ -66,6 +66,8 @@ const Analytics = () => {
     loadData();
    
   }, []);
+
+
 
   useEffect(() => {
     const fetchAnalytics = async () => {

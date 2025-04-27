@@ -1,24 +1,26 @@
 import { useState, useEffect } from "react";
 import { CalendarIcon, Clock } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
-import { Textarea } from "../components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../components/ui/select";
+} from "@/components/ui/select";
+import { toast } from "@/components/ui/use-toast";
 import { format } from "date-fns";
-import { cn } from "../lib/utils";
-import { Calendar as CalendarComponent } from "../components/ui/calendar";
+import { cn } from "@/lib/utils";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../components/ui/popover";
+} from "@/components/ui/popover";
+import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -64,6 +66,8 @@ const BookingForm = () => {
   // const [details, setDetails] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const Navigate = useNavigate();
+
+ 
 
   const {
     user,
@@ -124,6 +128,9 @@ const BookingForm = () => {
     localStorage.setItem("pending-booking", JSON.stringify(bookingDataToStore));
     Navigate("/Payment");
   }
+
+ 
+
 
   return (
     <div>

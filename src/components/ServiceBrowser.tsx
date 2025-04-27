@@ -1,34 +1,67 @@
-import { useState } from 'react';
-import { Search, Wrench, Lightbulb, Hammer, Home, Paintbrush, Bug, Flower2, FileText, Thermometer, Shield, ShowerHead, Truck, Heart, Car, Cpu, CalendarDays, Monitor } from 'lucide-react';
-import { Input } from './ui/input';
-import ServiceCard from '../components/ServiceCard';
+import { useState, useEffect } from 'react';
+import { Search, Wrench, Lightbulb, Hammer, Home, Paintbrush, Bug, Flower2, FileText, Thermometer, Shield, ShowerHead, Truck, Heart, Car, Cpu, CalendarDays, Users, HelpCircle, Monitor } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import ServiceCard from '@/components/ServiceCard';
+import { useAuth } from "../context/AuthContext";
 
-const AVAILABLE_SERVICES = [
-  { title: 'Plumbing Services', description: 'Fix leaks, installations, and repairs', icon: Wrench, price: '$50/hr' },
-  { title: 'Electrical Services', description: 'Wiring, fixtures, and electrical repairs', icon: Lightbulb, price: '$60/hr' },
-  { title: 'Carpentry Services', description: 'Furniture repair and custom woodwork', icon: Hammer, price: '$55/hr' },
-  { title: 'Home Appliance Repair', description: 'Fix appliances and household equipment', icon: Home, price: '$45/hr' },
-  { title: 'Painting Services', description: 'Interior and exterior painting', icon: Paintbrush, price: '$40/hr' },
-  { title: 'Pest Control', description: 'Removal and prevention of pests', icon: Bug, price: '$65/service' },
-  { title: 'Gardening & Landscaping', description: 'Garden maintenance and design', icon: Flower2, price: '$35/hr' },
-  { title: 'Home Renovation', description: 'Major and minor home renovations', icon: FileText, price: '$75/hr' },
-  { title: 'AC & HVAC Services', description: 'Installation and repair of climate systems', icon: Thermometer, price: '$70/hr' },
-  { title: 'Home Security', description: 'Security system installation and monitoring', icon: Shield, price: '$80/service' },
-  { title: 'Laundry Services', description: 'Washing, dry cleaning, and ironing', icon: ShowerHead, price: '$25/load' },
-  { title: 'Moving & Relocation', description: 'Packing, moving, and setup services', icon: Truck, price: '$90/hr' },
-  { title: 'Wellness & Lifestyle', description: 'In-home fitness, nutrition, and wellness', icon: Heart, price: '$45/session' },
-  { title: 'Vehicle Services', description: 'Car maintenance and repair at home', icon: Car, price: '$65/hr' },
-  { title: 'Smart Home', description: 'Smart device installation and setup', icon: Cpu, price: '$55/device' },
-  { title: 'Event Support', description: 'Party planning and event services', icon: CalendarDays, price: '$100/event' },
-  { title: 'Handyman Services', description: 'General repairs and maintenance', icon: Wrench, price: '$40/hr' },
-  { title: 'IT & Technical Support', description: 'Computer and tech support at home', icon: Monitor, price: '$50/hr' }
-];
+// Icon mapping for the services
+const ICON_MAP = {
+  "Plumbing Services": Wrench,
+  "Electrical Services": Lightbulb,
+  "Carpentry Services": Hammer,
+  "Home Appliance Repair": Home,
+  "Painting Services": Paintbrush,
+  "Pest Control": Bug,
+  "Gardening & Landscaping": Flower2,
+  "Home Renovation": FileText,
+  "AC & HVAC Services": Thermometer,
+  "Home Security": Shield,
+  "Laundry Services": ShowerHead,
+  "Moving & Relocation": Truck,
+  "Wellness & Lifestyle": Heart,
+  "Vehicle Services": Car,
+  "Smart Home": Cpu,
+  "Event Support": CalendarDays,
+  "Handyman Services": Wrench,
+  "IT & Technical Support": Monitor
+};
+
+const getDescriptionForService = (title) => {
+  const descriptions = {
+    "Plumbing Services": "Fix leaks, installations, and repairs",
+    "Electrical Services": "Wiring, fixtures, and electrical repairs",
+    "Carpentry Services": "Furniture repair and custom woodwork",
+    "Home Appliance Repair": "Fix appliances and household equipment",
+    "Painting Services": "Interior and exterior painting",
+    "Pest Control": "Removal and prevention of pests",
+    "Gardening & Landscaping": "Garden maintenance and design",
+    "Home Renovation": "Major and minor home renovations",
+    "AC & HVAC Services": "Installation and repair of climate systems",
+    "Home Security": "Security system installation and monitoring",
+    "Laundry Services": "Washing, dry cleaning, and ironing",
+    "Moving & Relocation": "Packing, moving, and setup services",
+    "Wellness & Lifestyle": "In-home fitness, nutrition, and wellness",
+    "Vehicle Services": "Car maintenance and repair at home",
+    "Smart Home": "Smart device installation and setup",
+    "Event Support": "Party planning and event services",
+    "Handyman Services": "General repairs and maintenance",
+    "IT & Technical Support": "Computer and tech support at home"
+  };
+  return descriptions[title] || "Service description not available";
+};
 
 const ServiceBrowser = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const { servicesList, getServicePrice } = useAuth();
   
-  const filteredServices = AVAILABLE_SERVICES.filter(
-    service => service.title.toLowerCase().includes(searchTerm.toLowerCase())
+  useEffect(() => {
+    if (servicesList.length === 0) {
+      getServicePrice();
+    }
+  }, []);
+  
+  const filteredServices = servicesList.filter(
+    service => service.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -51,10 +84,10 @@ const ServiceBrowser = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredServices.map((service) => (
             <ServiceCard
-              key={service.title}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
+              key={service.name}
+              title={service.name}
+              description={getDescriptionForService(service.name)}
+              icon={ICON_MAP[service.name] || HelpCircle}
               price={service.price}
             />
           ))}

@@ -1,9 +1,19 @@
 {
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "noImplicitAny": false,
+    "noUnusedParameters": false,
+    "skipLibCheck": true,
     "allowJs": true,
-    "checkJs": false,
-    "jsx": "react-jsx",
-    "esModuleInterop": true
-  },
-  "include": ["src"]
+    "noUnusedLocals": false,
+    "strictNullChecks": false
+  }
 }

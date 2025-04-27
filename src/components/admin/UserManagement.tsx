@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { adminApi } from '../../lib/admin-api'; // Assuming adminApi contains the functions for updating the user data
-import { User } from '../../lib/models'; // Assuming User is your data model
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Badge } from '../../components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
+import { adminApi } from '@/lib/admin-api'; // Assuming adminApi contains the functions for updating the user data
+import { User } from '@/lib/models'; // Assuming User is your data model
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Dialog,
   DialogContent,
@@ -12,8 +12,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../../components/ui/dialog";
-import { toast } from '../../components/ui/use-toast';
+} from "@/components/ui/dialog";
+import { toast } from '@/components/ui/use-toast';
 import { 
   Users, 
   Search, 
@@ -26,7 +26,7 @@ import {
   UserCheck,
   ClipboardList,
 } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 
 const UserManagement = () => {
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);

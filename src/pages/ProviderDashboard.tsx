@@ -1,9 +1,11 @@
-import { useAuth } from '../context/AuthContext';
+
+import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
-import { CalendarClock, DollarSign, Star, Users } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import ServiceManager from '../components/ServiceManager';
-import BookingRequests from '../components/BookingRequests';
+import { CalendarClock, Clock, DollarSign, Star, Users, Plus, Settings, Check, X } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Button } from '@/components/ui/button';
+import ServiceManager from '@/components/ServiceManager';
+import BookingRequests from '@/components/BookingRequests';
 
 const ProviderDashboard = () => {
   const { user } = useAuth();

@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import AuthForm from "../components/AuthForm";
+import AuthForm from "@/components/AuthForm";
 import { useEffect, useState } from "react";
 
 const Signup = () => {

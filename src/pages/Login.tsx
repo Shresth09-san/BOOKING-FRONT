@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import AuthForm from "../components/AuthForm";
+import AuthForm from "@/components/AuthForm";
 import { useState } from "react";
-import { Button } from "../components/ui/button";
+import { Button } from "@/components/ui/button";
 import { User, Wrench, ShieldCheck } from "lucide-react";
 
 const Login = () => {

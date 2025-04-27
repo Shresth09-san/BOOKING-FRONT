@@ -1,9 +1,11 @@
+
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import {  Calendar, MapPin, User, CheckCircle, XCircle, ClipboardList } from 'lucide-react';
-import { Badge } from '../components/ui/badge';
-import {Button } from '../components/ui/button'
-import { Tabs, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Clock, Calendar, MapPin, User, CheckCircle, XCircle, ClipboardList } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Dialog,
   DialogContent,
@@ -11,9 +13,9 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../components/ui/dialog";
-import { toast } from '../components/ui/use-toast';
-import { useAuth } from '../context/AuthContext';
+} from "@/components/ui/dialog";
+import { toast } from '@/components/ui/use-toast';
+import { useAuth } from '@/context/AuthContext';
 
 // Updated interface to remove 'booked' flag
 interface Booking {

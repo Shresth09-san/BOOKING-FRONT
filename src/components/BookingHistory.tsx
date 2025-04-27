@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { CalendarClock, Clock, Trash2 } from "lucide-react";
-import { Badge } from "../components/ui/badge";
-import { Button } from "../components/ui/button";
-import { toast } from "../components/ui/use-toast";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
 import {
   Dialog,
   DialogContent,
@@ -11,9 +11,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../components/ui/dialog";
+} from "@/components/ui/dialog";
 import axios from "axios";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Fetch bookings from your backend
@@ -260,6 +260,7 @@ const BookingHistory = () => {
                             variant="destructive"
                             size="sm"
                             onClick={() => handleCancelBooking(booking.id)}
+                         
                           >
                             Cancel
                           </Button> 

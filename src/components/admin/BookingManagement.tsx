@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
-import { adminApi } from '../../lib/admin-api';
-import { Booking } from '../../lib/models';
-import { Button } from '../../components/ui/button';
-import { Input } from '../../components/ui/input';
-import { Badge } from '../../components/ui/badge';
+import { adminApi } from '@/lib/admin-api';
+import { Booking } from '@/lib/models';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
 import { 
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../components/ui/select";
+} from "@/components/ui/select";
 import { 
   Dialog,
   DialogContent,
@@ -18,8 +18,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "../../components/ui/dialog";
-import { toast } from '../../components/ui/use-toast';
+} from "@/components/ui/dialog";
+import { toast } from '@/components/ui/use-toast';
 import {
   Search,
   Calendar,
@@ -32,7 +32,7 @@ import {
   ClipboardList,
   Filter,
 } from 'lucide-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 
 const BookingManagement = () => {
   const [filteredBookings, setFilteredBookings] = useState([]);

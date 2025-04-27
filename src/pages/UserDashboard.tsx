@@ -1,11 +1,13 @@
-import { useAuth } from '../context/AuthContext';
+
+import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
-import { CalendarClock, Search, Clock } from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
-import ServiceBrowser from '../components/ServiceBrowser';
-import BookingForm from '../components/BookingForm';
-import BookingHistory from '../components/BookingHistory';
+import { CalendarClock, Search, User, Clock, Home, Check, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import ServiceBrowser from '@/components/ServiceBrowser';
+import BookingForm from '@/components/BookingForm';
+import BookingHistory from '@/components/BookingHistory';
 
 const UserDashboard = () => {
   const { user } = useAuth();

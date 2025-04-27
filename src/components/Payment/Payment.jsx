@@ -4,7 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import { useToast } from "../../hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const Payment = () => {
   const [orderID, setOrderID] = useState("");

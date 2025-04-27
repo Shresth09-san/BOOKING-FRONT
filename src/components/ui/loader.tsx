@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import Logo from "../../assets/logoR.png";// Adjust the path as necessary
+import Logo from "@/assests/logoR.png"; // Adjust the path as necessary
 import gsap from 'gsap';
 
 const Loader: React.FC = () => {

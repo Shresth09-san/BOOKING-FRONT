@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
-import { Label } from "../components/ui/label";
-import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -34,6 +34,8 @@ const AuthForm = ({ mode, role }: AuthFormProps) => {
     }
   }, [UseEmailLogin, navigate, userrole]);
 
+ 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -49,17 +51,17 @@ const AuthForm = ({ mode, role }: AuthFormProps) => {
           withCredentials: true, // for cookies (if you're using them)
         }
       );
-
+  
       const data = response.data;
       if (!data || !data.token || !data.user) throw new Error("Invalid response from server.");
-
+  
       localStorage.setItem("doit-token", data.token);
       setUser(data.user);
       navigate(data.user.role === "admin" ? "/admin" : "/dashboard");
     } catch (err: any) {
       console.error(err);
       const errorMessage = err?.response?.data?.message || err.message || "Something went wrong.";
-
+      
       if (errorMessage.toLowerCase().includes("number already exists")) {
         setError("This mobile number is already registered. Try logging in instead.");
       } else {
@@ -69,6 +71,7 @@ const AuthForm = ({ mode, role }: AuthFormProps) => {
       setIsSubmitting(false);
     }
   };
+  
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in">
