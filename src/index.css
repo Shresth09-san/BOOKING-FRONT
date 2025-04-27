@@ -37,8 +37,6 @@
     --radius: 0.75rem;
   }
 
-  * {
-  }
 
   body {
     background-color: hsl(var(--background));
@@ -59,15 +57,30 @@
   }
   
   .btn-primary {
-    @apply bg-doit-400 text-white hover:bg-doit-500 transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-full font-medium;
+    @apply text-white transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-full font-medium;
+    background-color: hsl(var(--primary));
+  }
+  
+  .btn-primary:hover {
+    background-color: hsl(var(--accent));
   }
   
   .btn-secondary {
-    @apply bg-orange-500 text-white hover:bg-orange-600 transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-full font-medium;
+    @apply text-white transition-all duration-300 shadow-md hover:shadow-lg px-6 py-3 rounded-full font-medium;
+    background-color: hsl(var(--secondary));
+  }
+  
+  .btn-secondary:hover {
+    background-color: hsl(var(--accent));
   }
   
   .btn-outline {
-    @apply border-2 border-doit-400 text-doit-400 hover:bg-doit-400/10 transition-all duration-300 px-6 py-2.5 rounded-full font-medium;
+    @apply border-2 transition-all duration-300 px-6 py-2.5 rounded-full font-medium;
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+  }
+  .btn-outline:hover {
+    background-color: hsl(var(--primary) / 0.1);
   }
 
   .card-hover {
@@ -75,7 +88,14 @@
   }
   
   .nav-link {
-    @apply text-foreground/80 hover:text-foreground transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-doit-400 after:transition-all after:duration-300 hover:after:w-full;
+    @apply transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-300 hover:after:w-full;
+    color: hsl(var(--foreground) / 0.8);
+  }
+  .nav-link:hover {
+    color: hsl(var(--foreground));
+  }
+  .nav-link::after {
+    background: hsl(var(--primary));
   }
   
   .h1 {
